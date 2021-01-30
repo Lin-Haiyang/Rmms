@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ testData }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br />
       check out the
@@ -87,11 +87,27 @@
 </template>
 
 <script>
+import testApi from '@/api/test';
 export default {
+  data() {
+    return {
+      testData:[]
+    }
+  },
   name: "HelloWorld",
   props: {
     msg: String
-  }
+  },
+  created() {
+    this.getTestApi()
+  },
+  methods: {
+    getTestApi(){
+      testApi.getList().then(res => {
+        this.testData = res.data;
+      })
+    }
+  },
 };
 </script>
 
