@@ -7,7 +7,7 @@
       label-width="100px"
       class="login_from"
     >
-      
+      <h3>超市管理系统</h3>
       <el-form-item label="账号" prop="username" class="">
         <el-input
           v-model="ruleForm.username"
@@ -67,7 +67,6 @@ export default {
         if (valid) {
           login(this.username, this.password).then((res) => {
             const resMsg = res.data;
-            console.log(resMsg);
             if (resMsg.flag) {
               getUserInfo(resMsg.data.token).then((res) => {
                 const resUser = res.data;
